@@ -1,0 +1,119 @@
+@WebApiDemo_HostAddress = http://localhost:5039
+
+### Get all employees
+GET {{WebApiDemo_HostAddress}}/api/employee
+Accept: application/json
+
+### Get all employees - V1
+GET {{WebApiDemo_HostAddress}}/api/v1/Employee
+Accept: application/json
+
+###### Get employee by ID - V1
+GET {{WebApiDemo_HostAddress}}/api/v1/Employee/7
+Accept: application/json
+
+### Get employee by ID - V1
+GET {{WebApiDemo_HostAddress}}/api/v1/Employee/7
+Accept: application/json
+
+###
+
+### Get employee with JWT
+GET {{WebApiDemo_HostAddress}}/api/v1/Employee/7
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWZhbiIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlVzZXIiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjEiLCJleHAiOjE3ODgyNjcyMTksImlzcyI6IldlYkFwaURlbW8iLCJhdWQiOiJXZWJBcGlEZW1vVXNlcnMifQ.ULgZKQZTJYvJw-A4dKHQOtpJCl_TkZkcxrRIJf9EaP8
+### Get employee by ID
+GET {{WebApiDemo_HostAddress}}/api/employee/9999
+Accept: application/json
+
+### Get employee by ID (valid)
+GET {{WebApiDemo_HostAddress}}/api/employee/1
+Accept: application/json
+
+###
+
+### Get employee by ID (not found - test 404)
+GET {{WebApiDemo_HostAddress}}/api/employee/9999
+Accept: application/json
+
+###
+
+### Create new employee
+POST {{WebApiDemo_HostAddress}}/api/employee/register
+Content-Type: application/json
+
+{
+  "password": "Afan@123",
+  "confirmPassword": "Afan@123"
+}
+###
+
+POST {{WebApiDemo_HostAddress}}/api/employee/register
+Content-Type: application/json
+
+{
+  "password": "Afan@123",
+  "confirmPassword": "Afan@456"
+}
+
+
+### Register - triggers BadRequestException
+POST {{WebApiDemo_HostAddress}}/api/employee/register
+Content-Type: application/json
+
+{
+  "password": "Password1@",
+  "confirmPassword": "Password1@"
+}
+
+
+### Create new employee
+POST {{WebApiDemo_HostAddress}}/api/employee
+Content-Type: application/json
+
+{
+  "name": "Afan",
+  "department": "IT",
+  "age": 25,
+  "email": "afan@gmail.com",
+  "phone": "9876543210"
+}
+### Update employee
+PUT {{WebApiDemo_HostAddress}}/api/employee/13
+Content-Type: application/json
+
+{
+  "name": "Afan Updated",
+  "department": "Development",
+  "age": 25,
+  "email": "afan@gmail.com",
+  "phone": "9876543210"
+}
+###
+
+### Delete employee
+DELETE {{WebApiDemo_HostAddress}}/api/employee/8
+
+
+
+### LINQ: Get employees by department
+GET {{WebApiDemo_HostAddress}}/api/employee/department/IT
+Accept: application/json
+
+###
+
+### LINQ: Get employees sorted by name
+GET {{WebApiDemo_HostAddress}}/api/employee/sorted
+Accept: application/json
+
+###
+
+### LINQ: Get only employee names
+GET {{WebApiDemo_HostAddress}}/api/employee/names
+Accept: application/json
+
+###
+
+### LINQ: Get total count
+GET {{WebApiDemo_HostAddress}}/api/employee/count
+Accept: application/json

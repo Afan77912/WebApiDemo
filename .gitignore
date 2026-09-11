@@ -1,0 +1,20 @@
+﻿# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Build output
+bin/
+obj/
+
+# ASP.NET Core
+appsettings.Development.json
+
+# User Secrets
+secrets.json
+
+# Docker local files
+docker-data/
+
+# Logs
+*.log
